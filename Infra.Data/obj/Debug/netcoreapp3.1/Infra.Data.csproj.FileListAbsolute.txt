@@ -1,0 +1,5 @@
+C:\Users\PC\source\repos\Hospital\Infra.Data\bin\Debug\netcoreapp3.1\Infra.Data.deps.json
+C:\Users\PC\source\repos\Hospital\Infra.Data\bin\Debug\netcoreapp3.1\Infra.Data.dll
+C:\Users\PC\source\repos\Hospital\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.AssemblyInfoInputs.cache
+C:\Users\PC\source\repos\Hospital\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.AssemblyInfo.cs
+C:\Users\PC\source\repos\Hospital\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.csprojAssemblyReference.cache
