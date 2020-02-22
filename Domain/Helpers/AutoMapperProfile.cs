@@ -6,8 +6,8 @@ namespace Domain.Helpers
     {
         public AutoMapperProfile()
         {
-            CreateMap<Entities.User, Dtos.User >();
-            CreateMap<Dtos.User, Entities.User>();
+            CreateMap<Entities.Nurse, Dtos.Nurse>();
+            CreateMap<Dtos.Hospital, Entities.Hospital>();
         }
     }
 }

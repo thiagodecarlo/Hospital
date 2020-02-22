@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Dtos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,16 +10,10 @@ namespace Infra.Data.Mapping
         {
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Name).IsUnicode(false).HasMaxLength(100).IsRequired();
-            builder.Property(e => e.Description).IsUnicode(false).HasMaxLength(500);
-            builder.HasOne(e => e.SubArea).WithMany(e => e.Skills).IsRequired(false);
-            builder.Property(e => e.Approved).HasDefaultValue(true);
-            builder.Property(e => e.ApprovalDate).HasColumnType("timestamp").IsRequired(false);
-            builder.HasOne(e => e.Creator).WithMany(x => x.SkillsCreated).HasForeignKey(x => x.CreatorId);
-            builder.HasOne(e => e.ApprovedBy).WithMany(x => x.SkillsApproved).HasForeignKey(x => x.ApprovedById).IsRequired(false);
-            builder.Property(e => e.Active).HasDefaultValue(true);
-            builder.Property(e => e.RegistryDate).HasColumnType("timestamp");
-            builder.Property(e => e.RegistryChange).HasColumnType("timestamp");
-
+            builder.Property(e => e.CPF).IsUnicode(false).HasMaxLength(500);
+            builder.Property(e => e.COREN).IsUnicode(false).HasMaxLength(500);
+            builder.Property(e => e.BirthDate).HasColumnType("timestamp").IsRequired(false);
+            builder.HasOne(e => e.Hospital);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Infra.Data
+﻿namespace Infra.Data
 {
     public class Class1
     {

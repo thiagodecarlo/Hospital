@@ -1,7 +1,11 @@
+using AutoMapper;
+using Domain.Interfaces.Repositories;
+using Infra.Data.Context;
+using Infra.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,7 +24,24 @@ namespace Hospital
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy("Cors", builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
+
+            services.AddScoped<INurseRepository, NurseRepository>();
+            services.AddScoped<IHospitalRepository, HospitalRepository>();
+            services.AddAutoMapper();
+
+            var test = Configuration.GetConnectionString("Default");
+            services.AddEntityFrameworkNpgsql().AddDbContext<HospContext>()
+                .AddDbContext<HospContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Default")));
+
             services.AddControllersWithViews();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

@@ -3,33 +3,28 @@ using Infra.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace COMPE.Infra.Data.Context
+namespace Infra.Data.Context
 {
-    public class Context : DbContext
+    public class HospContext : DbContext
     {
+        public HospContext(DbContextOptions<HospContext> options) :
+            base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "DEVELOPMENT")
-                {
-                    optionsBuilder.UseNpgsql(_published);
-                }
-                else
-                    optionsBuilder.UseNpgsql(_published);
-            }
         }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new HospitalMapping());
             modelBuilder.ApplyConfiguration(new NurseMapping());
-
-            modelBuilder.Seed();
         }
 
-        public DbSet<Hospital> Address { get; set; }
-        public DbSet<Nurse> Area { get; set; }
+        public DbSet<Hospital> Hospital { get; set; }
+        public DbSet<Nurse> Nurse { get; set; }
 
 
         public static DateTime ServerTime()

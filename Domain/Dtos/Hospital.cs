@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Domain.Entities
+﻿namespace Domain.Dtos
 {
     public class Hospital
     {
@@ -8,6 +6,5 @@ namespace Domain.Entities
         public string Name { get; set; }
         public string Address { get; set; }
         public string CNPJ { get; set; }
-        public virtual ICollection<Nurse> Nurses { get; set; }
     }
 }
